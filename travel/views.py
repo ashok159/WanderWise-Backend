@@ -32,7 +32,16 @@ class EventViewSet(viewsets.ModelViewSet):
         firebase_user_id = self.request.query_params.get('firebase_user_id')
         return self.queryset.filter(firebase_user_id=firebase_user_id)
 
+#below are functions for users
+def check_username(request, username):
+    try: 
+        existing_user = Users.objects.get(username=username)
+        existing_username = existing_user.username
+        return JsonResponse({'username': existing_username})
+    except Users.DoesNotExist:
+        return JsonResponse({'username': None})
 
+# function for the flight tracker
 def search_location(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -45,6 +54,8 @@ def search_location(request):
     else:
         return JsonResponse({"error": "Invalid request method."}, status=400)
     
+# below are all budget tracker functions 
+
 # function to check if the current user has an existing max budget
 def check_max_budget(request, firebase_user_id):
     try:

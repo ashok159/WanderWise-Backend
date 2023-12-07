@@ -35,6 +35,7 @@ urlpatterns = [
     path('update_max_budget/<str:firebase_user_id>/', views.update_max_budget, name='update_max_budget'),
     path('get_events/<str:firebase_user_id>/', views.get_events_for_user, name='get_events'),
     path('delete_event/<str:firebase_user_id>/<str:event_id>/', views.delete_event, name='delete_event'),
+    path('check_username/<str:username>/', views.check_username, name='check_username'),
 ]
 
 

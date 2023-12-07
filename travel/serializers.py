@@ -4,7 +4,7 @@ from .models import Users, Budget, Event
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ('id', 'name', 'email', 'password')
+        fields = ('id', 'username', 'email')
 
 class BudgetSerializer(serializers.ModelSerializer):
     class Meta:
